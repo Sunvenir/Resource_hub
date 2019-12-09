@@ -4,10 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.result.RegisterResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.xml.transform.Result;
@@ -18,6 +15,7 @@ public class UserController {
     @Resource
     private UserMapper userMapper;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping("/api/register")
     public RegisterResult register(@RequestParam("useraccount") String useraccount,
                                    @RequestParam("password") String password){
@@ -25,11 +23,19 @@ public class UserController {
         user.setUID(useraccount);
         user.setPassword(password);
         user.setStatus("1");
-        System.out.println(useraccount + password);
+        //System.out.println(useraccount + password);
         int count = 0;
-        count = userMapper.insert(user);
-        System.out.println(count);
-        RegisterResult registerResult = new RegisterResult(count);
+        int code = 0;
+        if(userMapper.getByUId(useraccount) != null){
+            code = 200;
+        }
+        else{
+            userMapper.insert(user);
+            code = 100;
+        }
+
+        //System.out.println(count);
+        RegisterResult registerResult = new RegisterResult(code);
         return  registerResult;
     }
 

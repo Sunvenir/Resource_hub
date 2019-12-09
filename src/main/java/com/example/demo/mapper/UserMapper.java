@@ -8,5 +8,5 @@ public interface UserMapper {
     int insert(User user);
 
     @Select("select * from User where UID=#{UID}")
-    User getById(String UID);
+    User getByUId(String UID);
 }
