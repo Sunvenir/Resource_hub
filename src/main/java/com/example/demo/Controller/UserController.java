@@ -4,7 +4,6 @@ import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.result.RegisterResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,16 +15,13 @@ public class UserController {
     @Resource
     private UserMapper userMapper;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @CrossOrigin(origins = "*")
     @RequestMapping("/api/register")
     public RegisterResult register(@RequestParam("useraccount") String useraccount,
                                    @RequestParam("password") String password){
         User user = new User();
         user.setUID(useraccount);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setPassword(password);
         user.setStatus("1");
         //System.out.println(useraccount + password);
         int count = 0;
