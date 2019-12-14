@@ -13,7 +13,7 @@ public class Project {
     private String  projectType;
 
     public Project(){
-        this.projectID++;
+        projectID++;
     }
 
 

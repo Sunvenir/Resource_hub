@@ -5,8 +5,8 @@ import com.example.demo.entity.Relationship_project;
 import org.apache.ibatis.annotations.*;
 
 public interface ProjectMapper {
-    @Insert("insert into Project(projectName,approveUnit,brief,beginDate,finishDate, projectType " +
-            "values(#{projectName},#{approveUnit},#{brief},#{beginDate},#{finishDate},#{projectType})" )
+    @Insert("insert into Project(projectID,projectName,approveUnit,brief,beginDate,finishDate, projectType) " +
+            "values(#{projectID},#{projectName},#{approveUnit},#{brief},#{beginDate},#{finishDate},#{projectType})" )
     int insertProject(Project project);
 
     @Insert("insert into Relationship_project(expertID,projectID) values(#{expertID},#{projectID})")
