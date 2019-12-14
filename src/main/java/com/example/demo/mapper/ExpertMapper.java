@@ -20,4 +20,7 @@ public interface ExpertMapper {
     // TODO: select experts who have the most achievements
     @Select("select * from Expert limit 5")
     Expert[] expertRecommend();
+
+    @Update("update Expert set paperNum=paperNum+1 where ID=#{ID}")
+    int addPaper(int ID);
 }

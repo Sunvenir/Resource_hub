@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.entity.Paper;
 import com.example.demo.entity.Paper_Expert;
+import com.example.demo.mapper.ExpertMapper;
 import com.example.demo.mapper.PaperMapper;
 import com.example.demo.result.PaperDeleteResult;
 import com.example.demo.result.PaperInsertResult;
@@ -17,6 +18,10 @@ import javax.annotation.Resource;
 public class PaperController {
     @Resource
     private PaperMapper paperMapper;
+
+    @Resource
+    private ExpertMapper expertMapper;
+
     @CrossOrigin(origins = "*")
     @RequestMapping("/api/SearchPaper")
     public PaperSearchResult search(@RequestParam("paperID") final int paperID)
@@ -48,6 +53,7 @@ public class PaperController {
         p.setAbstractStr(abstractStr);
         p.setAuthor(author);
         paperMapper.insert(p);
+      //  expertMapper.addPaper(expertID);
         return pr;
     }
 
