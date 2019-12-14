@@ -40,14 +40,15 @@ public class PatentController {
         Patent p = new Patent();
         Patent_Expert pe = new Patent_Expert(p.getPatentID(), expertID);
         PatentInsertResult pr = new PatentInsertResult(p.getPatentID());
-        p.setPatentNumber(patentNumber);
+        p.setPatentName(patentName);
         p.setApplicationDate(applicationDate);
         p.setAuthorizationDate(authorizationDate);
         p.setPatentNumber(patentNumber);
         p.setBrief(brief);
         p.setPatentType(patentType);
         p.setPatentAuthor(patentAuthor);
-        patentMapper.insert(p);
+        patentMapper.insertPatent(p);
+        patentMapper.insertPatent_expert(pe);
         return pr;
     }
 
