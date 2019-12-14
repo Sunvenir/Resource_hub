@@ -5,7 +5,7 @@ public class User {
     private String username;
     private String password;
     private String status;
-    private String expertID;
+    private int expertID;
     private String applyID;
 
 
@@ -41,11 +41,11 @@ public class User {
         this.status = status;
     }
 
-    public String getExpertID() {
+    public int getExpertID() {
         return expertID;
     }
 
-    public void setExpertID(String expertID) {
+    public void setExpertID(int expertID) {
         this.expertID = expertID;
     }
 

@@ -3,11 +3,14 @@ package com.example.demo.Controller;
 import javax.annotation.Resource;
 
 import com.example.demo.entity.Expert;
+import com.example.demo.entity.User;
 import com.example.demo.mapper.ExpertMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.result.ExpertEditResult;
 import com.example.demo.result.ExpertIDResult;
 import com.example.demo.result.ExpertRecommendResult;
 
+import com.example.demo.result.ExpertaddResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExpertController {
     @Resource
     private ExpertMapper expertMapper;
+    private UserMapper userMapper;
 
     @CrossOrigin(origins = "*")
     @RequestMapping("/api/expert")
@@ -53,5 +57,23 @@ public class ExpertController {
         }
         int code = expertMapper.editExpert(expert);
         return new ExpertEditResult(code);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping("/api/editexpert")
+    public ExpertaddResult add(@RequestParam(name = "expertID") int expertID,
+                               @RequestParam(name = "useraccount") String useraccount){
+        User user = new User();
+        user = userMapper.getByUId(useraccount);
+        if(user == null){
+            return new ExpertaddResult(200);
+        }
+        user.setExpertID(expertID);
+        user.setStatus("2");
+        userMapper.editUser(user);
+        Expert expert = new Expert();
+        expert.setID(expertID);
+        expertMapper.insertExpert(expert);
+        return new ExpertaddResult(100);
     }
 }

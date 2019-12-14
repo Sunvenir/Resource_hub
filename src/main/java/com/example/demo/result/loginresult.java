@@ -3,9 +3,9 @@ package com.example.demo.result;
 public class loginresult {
     private int code;
     private String useroot;
-    private String expertID;
+    private int expertID;
 
-    public loginresult(int code, String useroot, String expertID) {
+    public loginresult(int code, String useroot, int expertID) {
         this.code = code;
         this.useroot = useroot;
         this.expertID = expertID;
@@ -27,11 +27,11 @@ public class loginresult {
         this.useroot = useroot;
     }
 
-    public String getExpertID() {
+    public int getExpertID() {
         return expertID;
     }
 
-    public void setExpertID(String expertID) {
+    public void setExpertID(int expertID) {
         this.expertID = expertID;
     }
 }

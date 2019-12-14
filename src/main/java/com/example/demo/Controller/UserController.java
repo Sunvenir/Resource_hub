@@ -39,16 +39,19 @@ public class UserController {
         RegisterResult registerResult = new RegisterResult(code);
         return  registerResult;
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping("/api/login")
     public loginresult login(@RequestParam("useraccount") String useraccount,
                              @RequestParam("password") String password){
         User user = new User();
         int code;
         String useroot;
-        String expertID;
+        int expertID;
         user = userMapper.getByUId(useraccount);
         if(user == null){
             code = 200;
-            loginresult loginresult = new loginresult(code,null,null);
+            loginresult loginresult = new loginresult(code,null,-1);
             return loginresult;
         }
         if(password.equals(user.getPassword())){
@@ -60,7 +63,7 @@ public class UserController {
         }
         else {
             code = 300;
-            loginresult loginresult = new loginresult(code,null,null);
+            loginresult loginresult = new loginresult(code,null,-1);
             return loginresult;
         }
     }

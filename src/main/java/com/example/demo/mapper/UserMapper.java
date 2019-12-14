@@ -9,4 +9,7 @@ public interface UserMapper {
 
     @Select("select * from User where UID=#{UID}")
     User getByUId(String UID);
+
+    @Update({ "update User set expertID=#{expertID},status=#{status} where useraccount=#{UID}" })
+    int editUser(User user);
 }
