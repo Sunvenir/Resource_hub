@@ -10,7 +10,7 @@ public class Patent
     private String brief;
     private String patentType;
     private String patentAuthor;
-    private Date _20191214;
+
     public Patent()
     {
         patentID++;
