@@ -7,7 +7,16 @@ public class Expert {
     private String brief;
     private String field;
     private String avatarUrl;
+    private int paper_num;
     private boolean iden;
+
+    public int getPaper_num() {
+        return paper_num;
+    }
+
+    public void setPaper_num(int paper_num) {
+        this.paper_num = paper_num;
+    }
 
     public int getID() {
         return ID;

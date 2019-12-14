@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExpertController {
     @Resource
     private ExpertMapper expertMapper;
+    @Resource
     private UserMapper userMapper;
 
     @CrossOrigin(origins = "*")
@@ -60,11 +61,11 @@ public class ExpertController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping("/api/editexpert")
+    @RequestMapping("/api/addexpert")
     public ExpertaddResult add(@RequestParam(name = "expertID") int expertID,
-                               @RequestParam(name = "useraccount") String useraccount){
-        User user = new User();
-        user = userMapper.getByUId(useraccount);
+                               @RequestParam(name = "useraccount") String UID){
+        //User user = new User();
+        User user = userMapper.getByUId(UID);
         if(user == null){
             return new ExpertaddResult(200);
         }
