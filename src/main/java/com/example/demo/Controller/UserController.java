@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.result.RegisterResult;
+import com.example.demo.result.loginresult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,31 @@ public class UserController {
         //System.out.println(count);
         RegisterResult registerResult = new RegisterResult(code);
         return  registerResult;
+    }
+    public loginresult login(@RequestParam("useraccount") String useraccount,
+                             @RequestParam("password") String password){
+        User user = new User();
+        int code;
+        String useroot;
+        String expertID;
+        user = userMapper.getByUId(useraccount);
+        if(user == null){
+            code = 200;
+            loginresult loginresult = new loginresult(code,null,null);
+            return loginresult;
+        }
+        if(password.equals(user.getPassword())){
+            code = 100;
+            useroot = user.getStatus();
+            expertID = user.getExpertID();
+            loginresult loginresult = new loginresult(code,useroot,expertID);
+            return  loginresult;
+        }
+        else {
+            code = 300;
+            loginresult loginresult = new loginresult(code,null,null);
+            return loginresult;
+        }
     }
 
 }
