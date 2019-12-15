@@ -23,7 +23,7 @@ public interface ExpertMapper {
     @Select("select * from Expert order by paperNum desc limit 5")
     Expert[] expertRecommend();
 
-    @Update("update Expert set isidentification=1 where expertID=#{expertID}")
+    @Update("update Expert set ifidentification=1 where expertID=#{expertID}")
     int idenExpert(Expert expert);
 
     @Update("update Expert set paperNum=paperNum+1 where expertID=#{expertID}")
