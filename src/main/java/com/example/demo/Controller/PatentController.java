@@ -39,7 +39,6 @@ public class PatentController {
     {
         Patent p = new Patent();
         Patent_Expert pe = new Patent_Expert(p.getPatentID(), expertID);
-        PatentInsertResult pr = new PatentInsertResult(p.getPatentID());
         p.setPatentID(patentMapper.searchmax() + 1);
         p.setPatentName(patentName);
         p.setApplicationDate(applicationDate);
@@ -50,6 +49,7 @@ public class PatentController {
         p.setPatentAuthor(patentAuthor);
         patentMapper.insertPatent(p);
         patentMapper.insertPatent_expert(pe);
+        PatentInsertResult pr = new PatentInsertResult(p.getPatentID());
         return pr;
     }
 
