@@ -31,7 +31,7 @@ public class ExpertController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping("/api/homepage")//参数名
+    @RequestMapping("/api/homepage") // 参数名
     public ExpertRecommendResult recommend() {
         Expert[] experts = expertMapper.expertRecommend();
         return new ExpertRecommendResult(experts);
@@ -72,9 +72,11 @@ public class ExpertController {
         user.setExpertID(expertID);
         user.setStatus("2");
         userMapper.editUser(user);
-        Expert expert = new Expert();
-        expert.setexpertID(expertID);
-        expertMapper.insertExpert(expert);
+        Expert expert = expertMapper.getExpertByID(expertID);
+        if (expert.getIsidentification() == 1) {
+            return new ExpertaddResult(200); // Already iden
+        }
+        expertMapper.idenExpert(expert);
         return new ExpertaddResult(100);
     }
 }

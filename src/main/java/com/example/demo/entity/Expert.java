@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 public class Expert {
-    private final String defAvatar = "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png";
+    private static final String defAvatar = "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png";
     private int expertID;
     private String expertName;
     private String institution;
@@ -11,6 +11,7 @@ public class Expert {
     private int paperNum;
     private int patentNum;
     private int projectNum;
+    private int isidentification;
 
     public int getexpertID() {
         return expertID;
@@ -85,6 +86,14 @@ public class Expert {
 
     public void setPaperNum(int paperNum) {
         this.paperNum = paperNum;
+    }
+
+    public int getIsidentification() {
+        return isidentification;
+    }
+
+    public void setIsidentification(int isidentification) {
+        this.isidentification = isidentification;
     }
 
 }
