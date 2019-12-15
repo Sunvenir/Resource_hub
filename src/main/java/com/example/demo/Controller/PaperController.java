@@ -45,9 +45,8 @@ public class PaperController {
                                     @RequestParam("author") final String author)
     {
         Paper p = new Paper();
-        Paper_Expert pe = new Paper_Expert(p.getPaperID(),expertID);
-        PaperInsertResult pr = new PaperInsertResult(p.getPaperID());
         p.setPaperID(paperMapper.searchPaperMaxId() + 1);
+        Paper_Expert pe = new Paper_Expert(p.getPaperID(),expertID);
         p.setPaperName(paperName);
         p.setDate(date);
         p.setSource(source);
@@ -57,6 +56,7 @@ public class PaperController {
         p.setAuthor(author);
         paperMapper.insertPaper(p);
         paperMapper.insertPaper_expert(pe);
+        PaperInsertResult pr = new PaperInsertResult(p.getPaperID());
         return pr;
     }
 
