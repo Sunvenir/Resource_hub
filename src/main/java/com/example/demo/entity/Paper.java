@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 public class Paper
 {
-    private static int PaperID = 1;
+    private int paperID;
     private String paperName;
     private String downloadLink;
     private String ISBN;
@@ -13,11 +13,8 @@ public class Paper
     private String _abstract;
     private String author;
 
-    public Paper()
-    {
-        PaperID ++;
-    }
-    public int getPaperID(){return this.PaperID;}
+    public int getPaperID(){return this.paperID;}
+    public void setPaperID(int paperID){this.paperID = paperID;}
 
     public String getPaperName(){return this.paperName;}
     public void setPaperName(String paperName){this.paperName = paperName;}

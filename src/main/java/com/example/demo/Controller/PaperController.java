@@ -44,9 +44,10 @@ public class PaperController {
                                     @RequestParam("abstract") final String _abstract,
                                     @RequestParam("author") final String author)
     {
-        final Paper p = new Paper();
-        final Paper_Expert pe = new Paper_Expert(p.getPaperID(),expertID);
-        final PaperInsertResult pr = new PaperInsertResult(p.getPaperID());
+        Paper p = new Paper();
+        Paper_Expert pe = new Paper_Expert(p.getPaperID(),expertID);
+        PaperInsertResult pr = new PaperInsertResult(p.getPaperID());
+        p.setPaperID(paperMapper.searchPaperMaxId() + 1);
         p.setPaperName(paperName);
         p.setDate(date);
         p.setSource(source);
@@ -66,11 +67,11 @@ public class PaperController {
         final PaperDeleteResult pr = new PaperDeleteResult();
         int code;
         if(paperMapper.search(paperID) == null)
-            code = 100;
-        else if (paperMapper.delete(expertID, paperID) != 0)
             code = 200;
+        else if (paperMapper.delete(expertID, paperID) != 0)
+            code = 100;
         else
-            code = 500;
+            code = 200;
         pr.setCode(code);
         return pr;
     }
