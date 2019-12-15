@@ -8,10 +8,19 @@ import com.example.demo.entity.Project;
 import java.util.List;
 
 public class SearchResult {
+    int num;
     private List<Expert> experts;
     private List<Paper> papers;
     private List<Patent> patents;
     private List<Project> projects;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public List<Expert> getExperts() {
         return experts;

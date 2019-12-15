@@ -1,22 +1,16 @@
 package com.example.demo.entity;
 
 public class Expert {
+    private final String defAvatar = "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png";
     private int expertID;
     private String expertName;
     private String institution;
     private String brief;
     private String technicalField;
     private String avatarUrl;
-    private int paper_num;
-    private boolean iden;
-
-    public int getPaper_num() {
-        return paper_num;
-    }
-
-    public void setPaper_num(int paper_num) {
-        this.paper_num = paper_num;
-    }
+    private int paperNum;
+    private int patentNum;
+    private int projectNum;
 
     public int getexpertID() {
         return expertID;
@@ -59,6 +53,9 @@ public class Expert {
     }
 
     public String getAvatarUrl() {
+        if (avatarUrl == null || avatarUrl == "") {
+            avatarUrl = defAvatar;
+        }
         return avatarUrl;
     }
 
@@ -66,12 +63,28 @@ public class Expert {
         this.avatarUrl = avatarUrl;
     }
 
-    public boolean isIden() {
-        return iden;
+    public int getPatentNum() {
+        return patentNum;
     }
 
-    public void setIden(boolean iden) {
-        this.iden = iden;
+    public void setPatentNum(int patentNum) {
+        this.patentNum = patentNum;
+    }
+
+    public int getProjectNum() {
+        return projectNum;
+    }
+
+    public void setProjectNum(int projectNum) {
+        this.projectNum = projectNum;
+    }
+
+    public int getPaperNum() {
+        return paperNum;
+    }
+
+    public void setPaperNum(int paperNum) {
+        this.paperNum = paperNum;
     }
 
 }
