@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 public interface PaperMapper{
     @Select("select * from paper where paperID=#{paperID}")
     Paper search(int paperID);
@@ -21,5 +23,7 @@ public interface PaperMapper{
     @Delete({"delete from paper_expert where expertID = #{expertID} and paperID = #{paperID}"})
     int delete(int expertID, int paperID);
 
+    @Select("select * from paper where paperName like #{searchword} or author liks #{searchword}")
+    List<Paper> searchPaper(String searchword);
 
 }
