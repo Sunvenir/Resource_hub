@@ -29,13 +29,13 @@ public class PatentController {
     @CrossOrigin(origins = "*")
     @RequestMapping("/api/InsertPatent")
     public PatentInsertResult insert(@RequestParam("expertID") final int expertID,
-                                   @RequestParam("patentName") final String patentName,
-                                 @RequestParam("applicationDate") final String applicationDate,
-                                 @RequestParam("authorizationDate") final String authorizationDate,
-                                 @RequestParam("patentNumber") final String patentNumber,
-                                 @RequestParam("brief") final String brief,
-                                 @RequestParam("patentType") final String patentType,
-                                 @RequestParam("patentAuthor") final String patentAuthor)
+                                   @RequestParam(value="patentName",required = false) final String patentName,
+                                 @RequestParam(value="applicationDate",required = false) final String applicationDate,
+                                 @RequestParam(value="authorizationDate",required = false) final String authorizationDate,
+                                 @RequestParam(value="patentNumber",required = false) final String patentNumber,
+                                 @RequestParam(value="brief",required = false) final String brief,
+                                 @RequestParam(value="patentType",required = false) final String patentType,
+                                 @RequestParam(value="patentAuthor",required = false) final String patentAuthor)
     {
         Patent p = new Patent();
         p.setPatentID(patentMapper.searchmax() + 1);
