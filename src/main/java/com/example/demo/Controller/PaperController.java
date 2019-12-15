@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import javax.annotation.Resource;
+
 import com.example.demo.entity.Paper;
 import com.example.demo.entity.Paper_Expert;
 import com.example.demo.mapper.ExpertMapper;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import javax.annotation.Resource;
+
 
 @RestController
 public class PaperController {
@@ -35,7 +37,7 @@ public class PaperController {
     @RequestMapping("/api/InsertPaper")
     public PaperInsertResult insert(@RequestParam("expertID") final int expertID,
                                     @RequestParam("paperName") final String paperName,
-                                    @RequestParam("downloadLink") final String downloadLink,
+                                    @RequestParam("date") final String date,
                                     @RequestParam("source") final String source,
                                     @RequestParam("keywords") final String keywords,
                                     @RequestParam("paperType") final String paperType,
@@ -46,14 +48,14 @@ public class PaperController {
         final Paper_Expert pe = new Paper_Expert(p.getPaperID(),expertID);
         final PaperInsertResult pr = new PaperInsertResult(p.getPaperID());
         p.setPaperName(paperName);
-        p.setDownloadLink(downloadLink);
+        p.setDate(date);
         p.setSource(source);
         p.setKeywords(keywords);
         p.setPaperType(paperType);
         p.setAbstractStr(abstractStr);
         p.setAuthor(author);
-        paperMapper.insert(p);
-      //  expertMapper.addPaper(expertID);
+        paperMapper.insertPaper(p);
+        paperMapper.insertPaper_expert(pe);
         return pr;
     }
 
@@ -64,11 +66,11 @@ public class PaperController {
         final PaperDeleteResult pr = new PaperDeleteResult();
         int code;
         if(paperMapper.search(paperID) == null)
-            code = 200;
-        else if (paperMapper.delete(expertID, paperID) != 0)
             code = 100;
-        else
+        else if (paperMapper.delete(expertID, paperID) != 0)
             code = 200;
+        else
+            code = 500;
         pr.setCode(code);
         return pr;
     }
