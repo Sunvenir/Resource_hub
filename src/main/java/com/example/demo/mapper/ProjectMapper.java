@@ -14,6 +14,9 @@ public interface ProjectMapper {
     @Insert("insert into Relationship_project(expertID,projectID) values(#{expertID},#{projectID})")
     int insertRelationship_project(int expertID,int projectID);
 
+    @Select("select max(projectID) from Project")
+    int searchMax();
+
     @Select("select * from Project where projectID=#{projectID}")
     Project getProject(String projectID);
 

@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import java.util.Date;
 
 public class Project {
-    private static int projectID=0;
+    private int projectID;
     private String projectName;
     private String downloadLink;
     private String approveUnit;
@@ -11,11 +11,6 @@ public class Project {
     private String beginDate;
     private String finishDate;
     private String  projectType;
-
-    public Project(){
-        projectID++;
-    }
-
 
     public int getProjectID(){
         return this.projectID;
