@@ -13,7 +13,7 @@ public interface PaperMapper{
 
     @Insert({"insert into paper(paperID,paperName,date,source,keywords,paperType,"+
              "abstract,author) values (#{paperID},#{paperName},#{date},#{source},"+
-             "#{keywords},#{paperType},#{abstractStr},#{author})"})
+             "#{keywords},#{paperType},#{_abstract},#{author})"})
     int insertPaper(Paper p);
 
     @Insert({"insert into paper_expert(expertID, paperID) values (#{expertID},#{paperID})"})

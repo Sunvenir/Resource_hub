@@ -8,4 +8,11 @@ public class PaperSearchResult {
     {
         this.paper = p;
     }
+    public Paper getPaper() {
+        return paper;
+    }
+
+    public void setPaper(Paper paper) {
+        this.paper = paper;
+    }
 }

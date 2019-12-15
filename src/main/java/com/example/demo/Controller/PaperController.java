@@ -41,7 +41,7 @@ public class PaperController {
                                     @RequestParam("source") final String source,
                                     @RequestParam("keywords") final String keywords,
                                     @RequestParam("paperType") final String paperType,
-                                    @RequestParam("abstractStr") final String abstractStr,
+                                    @RequestParam("abstract") final String _abstract,
                                     @RequestParam("author") final String author)
     {
         final Paper p = new Paper();
@@ -52,7 +52,7 @@ public class PaperController {
         p.setSource(source);
         p.setKeywords(keywords);
         p.setPaperType(paperType);
-        p.setAbstractStr(abstractStr);
+        p.setAbstract(_abstract);
         p.setAuthor(author);
         paperMapper.insertPaper(p);
         paperMapper.insertPaper_expert(pe);
