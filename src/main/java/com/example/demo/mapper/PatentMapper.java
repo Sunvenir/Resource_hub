@@ -12,6 +12,9 @@ public interface PatentMapper {
     @Select("select * from patent where patentID=#{patentID}")
     Patent search(int patentID);
 
+    @Select("select max(patentID) from patent ")
+    int searchmax();
+
     @Insert({"insert into patent(patentID,patentName,applicationDate,authorizationDate," +
             "patentNumber,brief,patentType,patentAuthor) values(#{patentID},#{patentName}," +
             "#{applicationDate}, #{authorizationDate},#{patentNumber},#{brief},#{patentType}, #{patentAuthor})"})
