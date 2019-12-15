@@ -38,11 +38,11 @@ public class PaperController {
     public PaperInsertResult insert(@RequestParam("expertID") final int expertID,
                                     @RequestParam("paperName") final String paperName,
                                     @RequestParam("date") final String date,
-                                    @RequestParam("source") final String source,
-                                    @RequestParam("keywords") final String keywords,
-                                    @RequestParam("paperType") final String paperType,
-                                    @RequestParam("abstract") final String _abstract,
-                                    @RequestParam("author") final String author)
+                                    @RequestParam(value = "source",required = false) final String source,
+                                    @RequestParam(value = "keywords",required = false) final String keywords,
+                                    @RequestParam(value = "paperType",required = false) final String paperType,
+                                    @RequestParam(value = "abstract",required = false) final String _abstract,
+                                    @RequestParam(value = "author",required = false) final String author)
     {
         Paper p = new Paper();
         p.setPaperID(paperMapper.searchPaperMaxId() + 1);
