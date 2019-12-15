@@ -5,4 +5,11 @@ public class PaperInsertResult {
     public PaperInsertResult(int id){
         this.paperID = id;
     }
+    public int getPaperID() {
+        return paperID;
+    }
+
+    public void setPaperID(int paperID) {
+        this.paperID = paperID;
+    }
 }

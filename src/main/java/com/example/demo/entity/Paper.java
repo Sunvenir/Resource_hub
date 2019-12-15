@@ -1,18 +1,12 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-import com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
-
 public class Paper
 {
     private static int PaperID = 0;
     private String paperName;
     private String downloadLink;
     private String ISBN;
-    private Date date;
+    private String date;
     private String source;
     private String keywords;
     private String paperType;
@@ -34,10 +28,8 @@ public class Paper
     public String getISBN(){return this.ISBN;}
     public void setISBN(String ISBN){this.ISBN = ISBN;}
 
-    public Date getDate(){return this.date;}
-    public void setDate(String dateStr){
-        
-    }
+    public String getDate(){return this.date;}
+    public void setDate(String date){ this.date = date;}
     
     public String getSource(){return this.source;}
     public void setSource(String source){this.source = source;}
