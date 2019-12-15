@@ -56,8 +56,8 @@ public class ExpertController {
         if (technicalField != null) {
             expert.settechnicalField(technicalField);
         }
-        int code = expertMapper.editExpert(expert);
-        return new ExpertEditResult(code);
+        expertMapper.editExpert(expert);
+        return new ExpertEditResult(100);
     }
 
     @CrossOrigin(origins = "*")
