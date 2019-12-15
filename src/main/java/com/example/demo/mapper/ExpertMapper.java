@@ -16,9 +16,9 @@ public interface ExpertMapper {
         @Select("select * from Expert where expertID=#{expertID}")
         Expert getExpertByID(int expertID);
 
-        @Select("select * from Expert order by paper_num desc limit 5")
+        @Select("select * from Expert order by paperNum desc limit 5")
         Expert[] expertRecommend();
 
-        @Update("update Expert set paper_num=paper_num+1 where expertID=#{expertID}")
+        @Update("update Expert set paperNum=paperNum+1 where expertID=#{expertID}")
         int addPaper(int expertID);
 }
