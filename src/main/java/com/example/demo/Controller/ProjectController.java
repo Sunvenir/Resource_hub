@@ -29,13 +29,13 @@ public class ProjectController {
         }
         @CrossOrigin(origins = "*")
         @RequestMapping("/api/insertProject")
-        public InsertProjectResult insertProject(@RequestParam("expertID") int expertID,
-                                                 @RequestParam("projectName") String projectName,
-                                                 @RequestParam("approveUnit") String approveUnit,
-                                                 @RequestParam("brief") String brief,
-                                                 @RequestParam("beginDate") String beginDate,
-                                                 @RequestParam("finishDate") String finishDate,
-                                                 @RequestParam("projectType") String projectType){
+        public InsertProjectResult insertProject(@RequestParam("expertID") final int expertID,
+                                                 @RequestParam(value="projectName",required = false) final String projectName,
+                                                 @RequestParam(value="approveUnit",required = false) final String approveUnit,
+                                                 @RequestParam(value="brief",required = false) final String brief,
+                                                 @RequestParam(value="beginDate",required = false) final String beginDate,
+                                                 @RequestParam(value="finishDate",required = false) final String finishDate,
+                                                 @RequestParam(value="projectType",required = false) final String projectType){
                 InsertProjectResult insertProjectResult=new InsertProjectResult();
                 Project project = new Project();
                 int projectID= ProjectMapper.searchMax()+1;
