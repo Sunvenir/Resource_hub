@@ -8,19 +8,19 @@ import org.apache.ibatis.annotations.Update;
 
 public interface ExpertMapper {
     @Insert({
-            "insert into Expert(ID,expertName,institution,brief,field,avatarUrl) values(#{ID},#{expertName},#{institution},#{brief},#{field},#{avatarUrl})" })
+            "insert into Expert(ID,expertName,institution,brief,field,avatarUrl) values(#{expertID},#{expertName},#{institution},#{brief},#{technicalField},#{avatarUrl})" })
     int insertExpert(Expert expert);
 
-    @Update({ "update Expert set institution=#{institution},brief=#{brief},field=#{field} where ID=#{ID}" })
+    @Update({
+            "update Expert set institution=#{institution},brief=#{brief},field=#{technicalField} where ID=#{expertID}" })
     int editExpert(Expert expert);
 
-    @Select("select * from Expert where ID=#{ID}")
+    @Select("select * from Expert where ID=#{expertID}")
     Expert getExpertByID(int ID);
 
-    // TODO: select experts who have the most achievements
-    @Select("select * from Expert limit 5")
+    @Select("select * from Expert order by paperNum desc limit 5")
     Expert[] expertRecommend();
 
-    @Update("update Expert set paperNum=paperNum+1 where ID=#{ID}")
+    @Update("update Expert set paperNum=paperNum+1 where ID=#{expertID}")
     int addPaper(int ID);
 }

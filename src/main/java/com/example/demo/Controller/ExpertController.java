@@ -54,7 +54,7 @@ public class ExpertController {
             expert.setBrief(brief);
         }
         if (technicalField != null) {
-            expert.setField(technicalField);
+            expert.settechnicalField(technicalField);
         }
         int code = expertMapper.editExpert(expert);
         return new ExpertEditResult(code);
@@ -63,17 +63,17 @@ public class ExpertController {
     @CrossOrigin(origins = "*")
     @RequestMapping("/api/addexpert")
     public ExpertaddResult add(@RequestParam(name = "expertID") int expertID,
-                               @RequestParam(name = "useraccount") String UID){
-        //User user = new User();
+            @RequestParam(name = "useraccount") String UID) {
+        // User user = new User();
         User user = userMapper.getByUId(UID);
-        if(user == null){
+        if (user == null) {
             return new ExpertaddResult(200);
         }
         user.setExpertID(expertID);
         user.setStatus("2");
         userMapper.editUser(user);
         Expert expert = new Expert();
-        expert.setID(expertID);
+        expert.setexpertID(expertID);
         expertMapper.insertExpert(expert);
         return new ExpertaddResult(100);
     }

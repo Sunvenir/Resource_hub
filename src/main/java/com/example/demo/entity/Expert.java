@@ -1,11 +1,11 @@
 package com.example.demo.entity;
 
 public class Expert {
-    private int ID;
+    private int expertID;
     private String expertName;
     private String institution;
     private String brief;
-    private String field;
+    private String technicalField;
     private String avatarUrl;
     private int paper_num;
     private boolean iden;
@@ -18,12 +18,12 @@ public class Expert {
         this.paper_num = paper_num;
     }
 
-    public int getID() {
-        return ID;
+    public int getexpertID() {
+        return expertID;
     }
 
-    public void setID(int expertID) {
-        this.ID = expertID;
+    public void setexpertID(int expertexpertID) {
+        this.expertID = expertexpertID;
     }
 
     public String getExpertName() {
@@ -50,12 +50,12 @@ public class Expert {
         this.brief = brief;
     }
 
-    public String getField() {
-        return field;
+    public String gettechnicalField() {
+        return technicalField;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void settechnicalField(String technicalField) {
+        this.technicalField = technicalField;
     }
 
     public String getAvatarUrl() {
