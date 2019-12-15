@@ -8,7 +8,6 @@ public class Expert {
     private String technicalField;
     private String avatarUrl;
     private int paper_num;
-    private boolean iden;
 
     public int getPaper_num() {
         return paper_num;
@@ -64,14 +63,6 @@ public class Expert {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
-    }
-
-    public boolean isIden() {
-        return iden;
-    }
-
-    public void setIden(boolean iden) {
-        this.iden = iden;
     }
 
 }
