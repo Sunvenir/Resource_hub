@@ -10,11 +10,11 @@ import java.util.List;
 
 public interface ExpertMapper {
     @Insert({
-            "insert into Expert(expertID,expertName,institution,brief,field,avatarUrl) values(#{expertID},#{expertName},#{institution},#{brief},#{technicalField},#{avatarUrl})" })
+            "insert into Expert(expertID,expertName,institution,brief,technicalField,avatarUrl) values(#{expertID},#{expertName},#{institution},#{brief},#{technicalField},#{avatarUrl})" })
     int insertExpert(Expert expert);
 
     @Update({
-            "update Expert set institution=#{institution},brief=#{brief},field=#{technicalField} where expertID=#{expertID}" })
+            "update Expert set institution=#{institution},brief=#{brief},technicalField=#{technicalField} where expertID=#{expertID}" })
     int editExpert(Expert expert);
 
     @Select("select * from Expert where expertID=#{expertID}")
