@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 public class Patent
 {
-    private static int patentID = 0;
+    private int patentID;
     private String patentName;
     private String applicationDate;
     private String authorizationDate;
@@ -11,12 +11,9 @@ public class Patent
     private String patentType;
     private String patentAuthor;
 
-    public Patent()
-    {
-        patentID++;
-    }
-
     public int getPatentID(){return this.patentID;}
+
+    public void setPatentID(int patentID){this.patentID = patentID;}
 
     public String getPatentName(){return this.patentName;}
 
