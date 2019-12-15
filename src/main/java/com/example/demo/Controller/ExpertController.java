@@ -31,7 +31,7 @@ public class ExpertController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping("/api/homepage")
+    @RequestMapping("/api/homepage")//参数名
     public ExpertRecommendResult recommend() {
         Expert[] experts = expertMapper.expertRecommend();
         return new ExpertRecommendResult(experts);

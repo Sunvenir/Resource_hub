@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 public class ProjectController {
@@ -38,6 +38,8 @@ public class ProjectController {
                                                  @RequestParam("projectType") String projectType){
                 InsertProjectResult insertProjectResult=new InsertProjectResult();
                 Project project = new Project();
+                int projectID= ProjectMapper.searchMax()+1;
+                project.setProjectID(projectID);
                 project.setProjectName(projectName);
                 project.setApproveUnit(approveUnit);
                 project.setBrief(brief);

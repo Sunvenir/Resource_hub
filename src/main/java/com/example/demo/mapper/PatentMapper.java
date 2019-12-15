@@ -26,6 +26,9 @@ public interface PatentMapper {
     @Delete({"delete from patent_expert where expertID = #{expertID} and patentID = #{patentID}"})
     int delete(int expertID, int patentID);
 
-    @Select("select * from patent where patentName like #{searchword} or brief liks #{searchword}")
-    List<Patent> searchPatent(String searchword);
+    @Select("select * from patent where patentName like #{searchword} or brief like #{searchword}")
+    List<Patent> searchPatent1(String searchword);
+
+    @Select("SELECT * FROM patent join patent_expert where patent.patentID = patent_expert.patentID and patent_expert.expertID = #{expertID} and (patentName like #{searchword} or brief like #{searchword})")
+    List<Patent> searchPatent2(int expertID,String searchword);
 }

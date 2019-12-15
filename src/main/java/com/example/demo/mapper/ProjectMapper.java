@@ -14,6 +14,9 @@ public interface ProjectMapper {
     @Insert("insert into Relationship_project(expertID,projectID) values(#{expertID},#{projectID})")
     int insertRelationship_project(int expertID,int projectID);
 
+    @Select("select max(projectID) from Project")
+    int searchMax();
+
     @Select("select * from Project where projectID=#{projectID}")
     Project getProject(String projectID);
 
@@ -23,7 +26,10 @@ public interface ProjectMapper {
     @Select("select * from Relationship_project where expertID=#{expertID} and projectID=#{projectID}")
     Relationship_project getRelationship_project(int expertID, int projectID);
 
-    @Select("select * from Project where projectName like #{searchword} or brief liks #{searchword} or " +
+    @Select("select * from Project where projectName like #{searchword} or brief like #{searchword} or " +
             "projectType like #{searchword}")
-    List<Project> searchProject(String searchword);
+    List<Project> searchProject1(String searchword);
+
+    @Select("SELECT * FROM Project join Relationship_project where Project.projectID = Relationship_project.projectID and Relationship_project.expertID = #{expertID} and (projectName like #{searchword} or brief like #{searchword} or projectType like #{searchword})")
+    List<Project> searchProject2(int expertID,String searchword);
 }
