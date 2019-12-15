@@ -66,9 +66,9 @@ public class PaperController {
         final PaperDeleteResult pr = new PaperDeleteResult();
         int code;
         if(paperMapper.search(paperID) == null)
-            code = 100;
-        else if (paperMapper.delete(expertID, paperID) != 0)
             code = 200;
+        else if (paperMapper.delete(expertID, paperID) != 0)
+            code = 100;
         else
             code = 500;
         pr.setCode(code);
