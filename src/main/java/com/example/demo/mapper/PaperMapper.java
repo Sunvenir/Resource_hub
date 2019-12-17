@@ -27,7 +27,7 @@ public interface PaperMapper{
     @Delete({"delete from paper_expert where expertID = #{expertID} and paperID = #{paperID}"})
     int delete(int expertID, int paperID);
 
-    @Select("select * from paper where paperName like #{searchword} or author like #{searchword}")
+    @Select("select * from paper where paperName like #{searchword} or author like #{searchword} or abstract like #{searchword} or keywords like #{searchword}")
     List<Paper> searchPaper1(String searchword);
 
     @Select("SELECT * FROM paper join paper_expert where paper.paperID = paper_expert.paperID and paper_expert.expertID = #{expertID} and (paperName like #{searchword} or author like #{searchword})")
