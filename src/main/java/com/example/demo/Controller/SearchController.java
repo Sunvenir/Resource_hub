@@ -51,6 +51,24 @@ public class SearchController {
                                @RequestParam(name = "pagenum") int pagenum,
                                @RequestParam(name = "expertID") int expertID) {
         SearchResult searchResult = new SearchResult();
+        String [] words = searchword.split(" ");
+        String worda = "", wordb = "", wordc = "";
+        int count = words.length;
+        if(count == 1)
+        {
+            worda = words[0];
+        }
+        else if (count == 2)
+        {
+            worda = words[0];
+            wordb = words[1];
+        }
+        else if(count>=3)
+        {
+            worda = words[0];
+            wordb = words[1];
+            wordc = words[2];
+        }
         if (searchkind.equals("expert")) {
             if (searchkind == old_searchkind && searchword == old_searchword && expertID == old_expertID) {
                 if (old_experts.size() < pagenum * 10) {
@@ -65,7 +83,7 @@ public class SearchController {
                 old_expertID = expertID;
                 List<Expert> experts = new ArrayList<Expert>();
                 if(expertID == 0){
-                    experts = expertMapper.searchExpert1("%"+searchword+"%");
+                    experts = expertMapper.searchExpert1("%"+worda+"%", "%"+wordb+"%", "%"+wordc+"%");
                 }
                 else experts = expertMapper.searchExpert2(expertID,"%"+searchword+"%");
                 //System.out.println(experts.get(0).getExpertName());
@@ -91,7 +109,7 @@ public class SearchController {
                 old_searchkind = searchkind;
                 List<Paper> papers = new ArrayList<Paper>();
                 if(expertID == 0)
-                    papers = paperMapper.searchPaper1("%"+searchword+"%");
+                    papers = paperMapper.searchPaper1("%"+worda+"%", "%"+wordb+"%", "%"+wordc+"%");
                 else
                     papers = paperMapper.searchPaper2(expertID,"%"+searchword+"%");
                 old_papers = papers;
@@ -115,7 +133,7 @@ public class SearchController {
                 old_searchkind = searchkind;
                 List<Patent> patents = new ArrayList<Patent>();
                 if(expertID == 0)
-                    patents = patentMapper.searchPatent1("%"+searchword+"%");
+                    patents = patentMapper.searchPatent1("%"+worda+"%", "%"+wordb+"%", "%"+wordc+"%");
                 else patents = patentMapper.searchPatent2(expertID,"%"+searchword+"%");
                 old_patents = patents;
                 if (patents.size() < pagenum * 10) {
@@ -138,7 +156,7 @@ public class SearchController {
                 old_searchkind = searchkind;
                 List<Project> projects = new ArrayList<Project>();
                 if(expertID == 0)
-                    projects = projectMapper.searchProject1("%"+searchword+"%");
+                    projects = projectMapper.searchProject1("%"+worda+"%", "%"+wordb+"%", "%"+wordb+"%");
                 else projects = projectMapper.searchProject2(expertID,"%"+searchword+"%");
                 old_projects = projects;
                 if (projects.size() < pagenum * 10) {

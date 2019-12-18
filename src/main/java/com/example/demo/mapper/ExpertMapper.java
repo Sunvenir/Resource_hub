@@ -29,11 +29,11 @@ public interface ExpertMapper {
     @Update("update Expert set paperNum=paperNum+1 where expertID=#{expertID}")
     int addPaper(int ID);
 
-    @Select("select * from Expert where institution like #{searchword} or expertName like #{searchword}" +
-            "or technicalField like #{searchword}")
-    List<Expert> searchExpert1(String searchword);
+    @Select("select * from Expert where (institution like #{searchworda} or expertName like #{searchworda} or technicalField like #{searchworda}) " +
+            "and (institution like #{searchwordb} or expertName like #{searchwordb} or technicalField like #{searchwordb})" +
+            "and (institution like #{searchwordc} or expertName like #{searchwordc} or technicalField like #{searchwordc})")
+    List<Expert> searchExpert1(String searchworda,String searchwordb,String searchwordc);
 
-    @Select("select * from Expert where expertID=#{expertID} and institution like #{searchword} or expertName like #{searchword}" +
-            "or technicalField like #{searchword}")
+    @Select("select * from Expert where expertID=#{expertID}")
     List<Expert> searchExpert2(int expertID,String searchword);
 }

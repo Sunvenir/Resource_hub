@@ -23,14 +23,17 @@ public interface PaperMapper{
 
     @Insert({"insert into paper_expert(expertID, paperID) values (#{expertID},#{paperID})"})
     int insertPaper_expert(Paper_Expert pe);
-    
+
     @Delete({"delete from paper_expert where expertID = #{expertID} and paperID = #{paperID}"})
     int delete(int expertID, int paperID);
 
-    @Select("select * from paper where paperName like #{searchword} or author like #{searchword} or abstract like #{searchword} or keywords like #{searchword}")
-    List<Paper> searchPaper1(String searchword);
+    @Select("select * from paper where(paperName like #{searchworda} and paperName like #{searchwordb} and paperName like #{searchwordc})" +
+            "or (author like #{searchworda} and author like #{searchwordb} and author like #{searchwordc})" +
+            "or (abstract like #{searchworda} and abstract like #{searchwordb} and abstract like #{searchwordc})" +
+            "or (keywords like #{searchworda} and keywords like #{searchwordb} and keywords like #{searchwordc})")
+    List<Paper> searchPaper1(String searchworda,String searchwordb,String searchwordc);
 
-    @Select("SELECT * FROM paper join paper_expert where paper.paperID = paper_expert.paperID and paper_expert.expertID = #{expertID} and (paperName like #{searchword} or author like #{searchword})")
+    @Select("SELECT * FROM paper join paper_expert where paper.paperID = paper_expert.paperID and paper_expert.expertID = #{expertID}")
     List<Paper> searchPaper2(int expertID,String searchword);
 
 }

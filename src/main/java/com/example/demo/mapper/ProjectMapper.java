@@ -30,6 +30,6 @@ public interface ProjectMapper {
             "(projectType like #{searchworda} and projectType like #{searchwordb} and projectType like #{searchwordc})")
     List<Project> searchProject1(String searchworda,String searchwordb,String searchwordc);
 
-    @Select("SELECT * FROM Project join Relationship_project where Project.projectID = Relationship_project.projectID and Relationship_project.expertID = #{expertID} and ((projectName like #{searchworda} and projectName like #{searchwordb} and projectName like #{searchwordc}) or (brief like #{searchworda} and brief like #{searchwordb} and brief like #{searchwordc}) or (projectType like #{searchworda} and projectType like #{searchwordb} and projectType like #{searchwordc}))")
-    List<Project> searchProject2(int expertID,String searchworda,String searchwordb,String searchwordc);
+    @Select("SELECT * FROM Project join Relationship_project where Project.projectID = Relationship_project.projectID and Relationship_project.expertID = #{expertID}")
+    List<Project> searchProject2(int expertID,String searchword);
 }
