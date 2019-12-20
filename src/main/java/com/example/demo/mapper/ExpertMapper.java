@@ -20,7 +20,7 @@ public interface ExpertMapper {
     @Select("select * from Expert where expertID=#{expertID}")
     Expert getExpertByID(int ID);
 
-    @Select("select * from Expert order by paperNum desc limit 5")
+    @Select("select * from Expert where institution not like '%医%' order by paperNum desc limit 5")
     Expert[] expertRecommend();
 
     @Update("update Expert set ifidentification=1 where expertID=#{expertID}")

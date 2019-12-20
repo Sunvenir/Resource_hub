@@ -88,12 +88,12 @@ public class Expert {
         this.paperNum = paperNum;
     }
 
-    public int getIsidentification() {
+    public int getIfidentification() {
         return ifidentification;
     }
 
-    public void setIsidentification(int isidentification) {
-        this.ifidentification = isidentification;
+    public void setIfidentification(int ifidentification) {
+        this.ifidentification = ifidentification;
     }
 
 }

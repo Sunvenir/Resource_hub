@@ -73,7 +73,7 @@ public class ExpertController {
         user.setStatus("2");
         userMapper.editUser(user);
         Expert expert = expertMapper.getExpertByID(expertID);
-        if (expert.getIsidentification() == 1) {
+        if (expert.getIfidentification() == 1) {
             return new ExpertaddResult(200); // Already iden
         }
         expertMapper.idenExpert(expert);
