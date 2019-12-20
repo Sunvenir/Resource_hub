@@ -11,7 +11,7 @@ public class Expert {
     private int paperNum;
     private int patentNum;
     private int projectNum;
-    private int isidentification;
+    private int ifidentification;
 
     public int getexpertID() {
         return expertID;
@@ -89,11 +89,11 @@ public class Expert {
     }
 
     public int getIsidentification() {
-        return isidentification;
+        return ifidentification;
     }
 
     public void setIsidentification(int isidentification) {
-        this.isidentification = isidentification;
+        this.ifidentification = isidentification;
     }
 
 }
